@@ -1,0 +1,20 @@
+  <!--adding event listeners is done with () and in between "" we call the method in the ts file normally
+  we can also bind css properties similar to binding html properties (see [class.active]="selected")
+  and for that we define a class that will be added in the css file-->
+<app-card>
+  <button [class.active]="selected" (click)="onSelectUser()">
+    <img [src]="imageUrl" [alt]="user.name"/>
+    <span>{{ user.name }}</span>
+  </button>
+</app-card>
+
+<!--
+   Binding dynamic data:
+   there is a property binding using brackets
+   when using property binding we can directly use the public properties in the ts file
+   [src]="'assets/users/' + selectedUser.avatar" [alt]="selectedUser.name"
+   however we usually leave the computations out of the html for simplicity
+   in this case we used the getter defined in the ts file
+   and also property binding using {{ }}
+   between the double curly braces we can write any JS expression
+   -->

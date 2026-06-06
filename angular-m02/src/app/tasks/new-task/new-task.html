@@ -1,0 +1,31 @@
+<div class="backdrop" (click)="onCancel()"></div>
+<dialog open>
+  <h2>Add Task</h2>
+  <form (ngSubmit)="onFormSubmit()">
+    <p>
+      <label for="title">Title</label>
+      <!--Two way binding & getting input from input elements. Instant update for enteredTitle-->
+      <input type="text" id="title" name="title" [(ngModel)]="enteredTitle" />
+    </p>
+
+    <p>
+      <label for="summary">Summary</label>
+      <textarea id="summary" rows="5" name="summary" [(ngModel)]="enteredSummary" ></textarea>
+    </p>
+
+    <p>
+      <label for="due-date">Due Date</label>
+      <input type="date" id="due-date" name="due-date" [(ngModel)]="enteredDate" />
+    </p>
+
+    <p class="actions">
+      <!-- here we are using an explicit "button" type to not submit the form -->
+      <button type="button" (click)="onCancel()">Cancel</button>
+      <!--submit type button in a form parent element, will send the form through a request to the server
+      as we don't have such a server we want to prevent this behavior
+      we want to handle the submission in Javascript on the client side
+      importing FormsModule (in the ts file) wil automatically handling the prevention mechanism-->
+      <button type="submit">Create</button>
+    </p>
+  </form>
+</dialog>

@@ -1,0 +1,48 @@
+<style>
+
+</style>
+
+<app-header></app-header>
+
+<main>
+    <ul id="users">
+
+      <!--for loops-->
+      @for (user of users; track user.id) {
+        <li>
+          <!--
+          (select) will receive the emitted value from the child component and $event
+          The parent is passing data into app-user:
+              [id]="users[0].id"
+              [avatar]="users[0].avatar"
+              [name]="users[0].name"
+              These connect to the child’s inputs
+          This part listens for an event coming out of the child:
+              (select)="onSelectUser($event)"
+          It connects to the child’s output:
+              @Output() select = new EventEmitter();
+          $event is the value emitted by the child. In this case, it is the user id.
+
+
+                  [id], [avatar], [name]
+                  Parent -> Child
+
+                  (select)="onSelectUser($event)
+                  Child -> Parent
+              -->
+          <app-user [user]="user" [selected]="user.id === selectedUserId" (select)="onSelectUser($event)" />
+        </li>
+      }
+    </ul>
+
+    <!--conditional-->
+    @if (selectedUser) {
+      <!--userId and name are from TasksComponent [child component]
+      and selectedUser() getter from AppComponent will provide the data for them-->
+      <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name" />
+    } @else {
+      <p id="fallback">Select a user to see their tasks.</p>
+    }
+
+</main>
+
