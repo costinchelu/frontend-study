@@ -1,0 +1,4 @@
+https://pypi.org/project/ts2python
+https://writer.sh/posts/gentle-introduction-to-typescript-compiler-api
+https://github.com/dsherret/ts-factory-code-generator-generator
+https://github.com/DefinitelyTyped

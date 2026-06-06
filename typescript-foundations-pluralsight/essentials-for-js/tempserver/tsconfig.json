@@ -1,0 +1,10 @@
+{
+  "files": [ "../shared/dataPacket.ts", "./temp.ts" ],
+  "compilerOptions": {
+    "target": "ES6", 
+    "module": "NodeNext", 
+    "moduleResolution": "NodeNext", 
+    "types": [ "@types/node"], 
+    "strict": true 
+  }
+}

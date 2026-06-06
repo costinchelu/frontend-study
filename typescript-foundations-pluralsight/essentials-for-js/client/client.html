@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Status</title>
+	<script src="./dist/bundle.js" type="module"></script>
+	<link rel="stylesheet" href="./chart.css">
+</head>
+<body>
+	<div id="controlBox">
+		<label for="pauseButton">Pause/Unpause</label>
+		<input type="checkbox" id="pauseButton" />
+	</div>
+	<div id="container">
+		<svg id="chart"></svg>
+	</div>
+	
+	<table id="dataTable">
+		<thead>
+			<th>
+				#
+			</th>
+			<th>
+				Value
+			</th>
+			<th>
+				Sensor Id
+			</th>
+			<th>
+				Time Received
+			</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="4">
+					Waiting for ten data points...
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

@@ -1,0 +1,1 @@
+run with: `npx tsx .\path\to\the\ts\file\index.ts`
