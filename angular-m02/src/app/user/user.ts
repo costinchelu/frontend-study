@@ -12,7 +12,6 @@ import { CardComponent } from '../shared/card/card';
   imports: [CardComponent]
 })
 export class UserComponent {
-
   /* all the properties we are defining here are public by default, so we can use them in the template (html file)
   if any property is marked as private (with the private keyword), then we cannot use it in the template,
   and it will only be accessible within the class (ts file)
@@ -24,7 +23,7 @@ export class UserComponent {
   @Input({ required: true }) user!: User;
 
   // value set in app.html [parent]
-  @Input({required: true}) selected!: boolean;
+  @Input({ required: true }) selected!: boolean;
 
   // output decorator will allow us to emit events from this component to the parent component
   @Output() select = new EventEmitter<string>();
@@ -36,7 +35,8 @@ export class UserComponent {
 
   /* on click, we can change the state of a component
      (in this case, changing the value of a property, and it will reflect in the HTML dynamically)
-     when we click the button (see .html file, then we emit the user's id to the app component (parent)) */
+     when we click the button (see .html file, then we emit the user's id to the parent component (AppComponent))
+     AppComponent will then receive it through the event and can further process it*/
   onSelectUser() {
     this.select.emit(this.user.id);
   }

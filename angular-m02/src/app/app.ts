@@ -13,7 +13,7 @@ Angular has a hierarchical module system that allows for better organization and
 So we import other components (like app-header) in their respective modules (in this case app.module.ts), and then we import the module in main.ts.
 This way we can keep our code organized and maintainable.
 
-Also besides the import, we need to declare the component in the "imports" property of the @Component decorator.
+Also, besides the import, we need to declare the component in the "imports" property of the @Component decorator.
  */
 
 @Component({
