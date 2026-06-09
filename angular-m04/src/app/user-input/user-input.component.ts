@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Output} from "@angular/core";
+import {Component, inject, signal} from "@angular/core";
 import {FormsModule} from "@angular/forms";
-import type {InvestmentInput} from "../investment.model";
+import {InvestmentService} from "../investment.service";
 
 @Component({
   selector: 'app-user-input',
@@ -11,19 +11,23 @@ import type {InvestmentInput} from "../investment.model";
 })
 export class UserInputComponent {
 
-  @Output() calculate = new EventEmitter<InvestmentInput>();
+  private investmentService = inject(InvestmentService);
 
-  twoWayInitialInvestment = '0';
-  twoWayAnnualInvestment = '0';
-  twoWayExpectedReturn = '0';
-  twoWayDuration = '0';
+  twoWayInitialInvestment = signal('0');
+  twoWayAnnualInvestment = signal('0');
+  twoWayExpectedReturn = signal('0');
+  twoWayDuration = signal('10');
 
   onSubmit() {
-    this.calculate.emit({
-      initialInvestment: +this.twoWayInitialInvestment,
-      annualInvestment: +this.twoWayAnnualInvestment,
-      expectedReturn: +this.twoWayExpectedReturn,
-      duration: +this.twoWayDuration,
+    this.investmentService.calculateInvestmentResults({
+      initialInvestment: +this.twoWayInitialInvestment(),
+      annualInvestment: +this.twoWayAnnualInvestment(),
+      expectedReturn: +this.twoWayExpectedReturn(),
+      duration: +this.twoWayDuration(),
     });
+    this.twoWayInitialInvestment.set('0');
+    this.twoWayAnnualInvestment.set('0');
+    this.twoWayExpectedReturn.set('0');
+    this.twoWayDuration.set('10');
   }
 }

@@ -7,6 +7,4 @@ import {Component} from "@angular/core";
   imports: [],
   standalone: true
 })
-export class HeaderComponent {
-
-}
+export class HeaderComponent { }
