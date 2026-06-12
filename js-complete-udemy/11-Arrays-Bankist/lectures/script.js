@@ -148,7 +148,9 @@ console.log(movementsDescriptions);
 ///////////////////////////////////////
 // The filter Method
 
-const deposits = movements.filter((mov, i, arr) => mov > 0);
+const deposits = movements.filter(
+    (mov, i, arr) => mov > 0
+);
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(movements);
 console.log(withdrawals);
@@ -215,6 +217,40 @@ const firstWithdrawal = movements.find(mov => mov < 0);
 console.log(movements);
 console.log(firstWithdrawal);
 
+const account1 = {
+    owner: 'Jonas Schmedtmann',
+    movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+    interestRate: 1.2, // %
+    pin: 1111,
+    type: 'premium',
+};
+
+const account2 = {
+    owner: 'Jessica Davis',
+    movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+    interestRate: 1.5,
+    pin: 2222,
+    type: 'standard',
+};
+
+const account3 = {
+    owner: 'Steven Thomas Williams',
+    movements: [200, -200, 340, -300, -20, 50, 400, -460],
+    interestRate: 0.7,
+    pin: 3333,
+    type: 'premium',
+};
+
+const account4 = {
+    owner: 'Sarah Smith',
+    movements: [430, 1000, 700, 50, 90],
+    interestRate: 1,
+    pin: 4444,
+    type: 'basic',
+};
+
+const accounts = [account1, account2, account3, account4];
+
 console.log(accounts);
 
 const account = accounts.find(acc => acc.owner === 'Jessica Davis');
@@ -269,24 +305,24 @@ console.log(movements.filter(deposit));
 ///////////////////////////////////////
 // flat and flatMap
 
-const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
-console.log(arr.flat());
+const arr3 = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr3.flat());
 
 const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
 console.log(arrDeep.flat(2));
 
 // flat
-const overalBalance = accounts
+const overallBalance = accounts
     .map(acc => acc.movements)
     .flat()
     .reduce((acc, mov) => acc + mov, 0);
-console.log(overalBalance);
+console.log(overallBalance);
 
 // flatMap
-const overalBalance2 = accounts
+const overallBalance2 = accounts
     .flatMap(acc => acc.movements)
     .reduce((acc, mov) => acc + mov, 0);
-console.log(overalBalance2);
+console.log(overallBalance2);
 
 
 ///////////////////////////////////////
@@ -347,7 +383,7 @@ console.log(groupedAccounts);
 
 ///////////////////////////////////////
 // More Ways of Creating and Filling Arrays
-const arr = [1, 2, 3, 4, 5, 6, 7];
+const arr4 = [1, 2, 3, 4, 5, 6, 7];
 console.log(new Array(1, 2, 3, 4, 5, 6, 7));
 
 // Empty arrays + fill method
@@ -358,8 +394,8 @@ x.fill(1, 3, 5);
 x.fill(1);
 console.log(x);
 
-arr.fill(23, 2, 6);
-console.log(arr);
+arr4.fill(23, 2, 6);
+console.log(arr4);
 
 // Array.from
 const y = Array.from({ length: 7 }, () => 1);
@@ -368,6 +404,7 @@ console.log(y);
 const z = Array.from({ length: 7 }, (_, i) => i + 1);
 console.log(z);
 
+const labelBalance = document.querySelector('.balance__value');
 labelBalance.addEventListener('click', function () {
   const movementsUI = Array.from(
       document.querySelectorAll('.movements__value'),
@@ -423,7 +460,7 @@ console.log(++a);
 console.log(a);
 
 // 3.
-const { deposits, withdrawals } = accounts
+const { deposits2, withdrawals2 } = accounts
     .flatMap(acc => acc.movements)
     .reduce(
         (sums, cur) => {
@@ -431,10 +468,10 @@ const { deposits, withdrawals } = accounts
           sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
           return sums;
         },
-        { deposits: 0, withdrawals: 0 },
+        { deposits2: 0, withdrawals2: 0 },
     );
 
-console.log(deposits, withdrawals);
+console.log(deposits2, withdrawals2);
 
 // 4.
 // this is a nice title -> This Is a Nice Title

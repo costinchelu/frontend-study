@@ -167,7 +167,6 @@ btnLogin.addEventListener('click', function (e) {
   }
 });
 
-/*
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
   const amount = Number(inputTransferAmount.value);
@@ -235,6 +234,3 @@ btnSort.addEventListener('click', function (e) {
   displayMovements(currentAccount.movements, !sorted);
   sorted = !sorted;
 });
-
- */
-
