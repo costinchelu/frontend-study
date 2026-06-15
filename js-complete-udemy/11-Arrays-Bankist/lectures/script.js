@@ -273,9 +273,11 @@ console.log(movements.filter(deposit));
 ///////////////////////////////////////
 // flat and flatMap
 
+// reducing to a single continuous array (original array will be modified)
 const arr3 = [[1, 2, 3], [4, 5, 6], 7, 8];
 console.log(arr3.flat());
 
+// we can even go more than one level deep
 const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
 console.log(arrDeep.flat(2));
 
@@ -287,6 +289,7 @@ const overallBalance = shared.accounts
 console.log(overallBalance);
 
 // flatMap
+// flatMap = it ia a map + a flat in one operation
 const overallBalance2 = shared.accounts
     .flatMap(acc => acc.movements)
     .reduce((acc, mov) => acc + mov, 0);
@@ -302,10 +305,11 @@ console.log(owners.sort());
 console.log(owners);
 
 // Numbers
+// (in JS the sorting is based on strings) -> we need to pass a compare callback function
 console.log(movements);
 
-// return < 0, A, B (keep order)
-// return > 0, B, A (switch order)
+// if we return < 0, A, B (keep order)
+// if we return > 0, B, A (switch order)
 
 // Ascending
 // movements.sort((a, b) => {
@@ -329,11 +333,13 @@ console.log(movements);
 
 console.log(movements);
 
+// using a callback in Object.groupBy
 const groupedMovements = Object.groupBy(movements, movement =>
     movement > 0 ? 'deposits' : 'withdrawals'
 );
 console.log(groupedMovements);
 
+// can group in more than two groups
 const groupedByActivity = Object.groupBy(shared.accounts, account => {
   const movementCount = account.movements.length;
 
@@ -707,6 +713,7 @@ const dogs = [
   { weight: 32, curFood: 340, owners: ['Michael'] },
 ];
 
+GOOD LUCK 😀
 */
 
 /*
