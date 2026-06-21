@@ -1,11 +1,38 @@
-import * as shared from "../shared.js";
-
 'use strict';
 
+const account1 = {
+    owner: 'Jonas Schmedtmann',
+    movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+    interestRate: 1.2, // %
+    pin: 1111,
+    type: 'premium',
+};
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// LECTURES
+const account2 = {
+    owner: 'Jessica Davis',
+    movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+    interestRate: 1.5,
+    pin: 2222,
+    type: 'standard',
+};
+
+const account3 = {
+    owner: 'Steven Thomas Williams',
+    movements: [200, -200, 340, -300, -20, 50, 400, -460],
+    interestRate: 0.7,
+    pin: 3333,
+    type: 'premium',
+};
+
+const account4 = {
+    owner: 'Sarah Smith',
+    movements: [430, 1000, 700, 50, 90],
+    interestRate: 1,
+    pin: 4444,
+    type: 'basic',
+};
+
+const accounts = [account1, account2, account3, account4];
 
 /////////////////////////////////////////////////
 // Simple Array Methods
@@ -219,9 +246,9 @@ console.log(movements);
 const firstWithdrawal = movements.find(mov => mov < 0);
 console.log(firstWithdrawal);
 
-console.log(shared.accounts);
+console.log(accounts);
 
-const foundAccount = shared.accounts.find(acc => acc.owner === 'Jessica Davis');
+const foundAccount = accounts.find(acc => acc.owner === 'Jessica Davis');
 console.log(foundAccount);
 
 
@@ -261,7 +288,7 @@ console.log(anyDeposits);
 
 // EVERY (similar to all())
 console.log(movements.every(mov => mov > 0));
-console.log(shared.account4.movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
 
 // Separate callback
 const deposit = mov => mov > 0;
@@ -282,7 +309,7 @@ const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
 console.log(arrDeep.flat(2));
 
 // flat
-const overallBalance = shared.accounts
+const overallBalance = accounts
     .map(acc => acc.movements)
     .flat()
     .reduce((acc, mov) => acc + mov, 0);
@@ -290,7 +317,7 @@ console.log(overallBalance);
 
 // flatMap
 // flatMap = it ia a map + a flat in one operation
-const overallBalance2 = shared.accounts
+const overallBalance2 = accounts
     .flatMap(acc => acc.movements)
     .reduce((acc, mov) => acc + mov, 0);
 console.log(overallBalance2);
@@ -340,7 +367,7 @@ const groupedMovements = Object.groupBy(movements, movement =>
 console.log(groupedMovements);
 
 // can group in more than two groups
-const groupedByActivity = Object.groupBy(shared.accounts, account => {
+const groupedByActivity = Object.groupBy(accounts, account => {
   const movementCount = account.movements.length;
 
   if (movementCount >= 8) return 'very active';
@@ -351,7 +378,7 @@ const groupedByActivity = Object.groupBy(shared.accounts, account => {
 console.log(groupedByActivity);
 
 // const groupedAccounts = Object.groupBy(accounts, account => account.type);
-const groupedAccounts = Object.groupBy(shared.accounts, ({ type }) => type);
+const groupedAccounts = Object.groupBy(accounts, ({ type }) => type);
 console.log(groupedAccounts);
 
 
@@ -410,7 +437,7 @@ console.log(movements);
 // Array Methods Practice
 
 // 1.
-const bankDepositSum = shared.accounts
+const bankDepositSum = accounts
     .flatMap(acc => acc.movements)
     .filter(mov => mov > 0)
     .reduce((sum, cur) => sum + cur, 0);
@@ -422,7 +449,7 @@ console.log(bankDepositSum);
 //   .flatMap(acc => acc.movements)
 //   .filter(mov => mov >= 1000).length;
 
-const numDeposits1000 = shared.accounts
+const numDeposits1000 = accounts
     .flatMap(acc => acc.movements)
     .reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
 
@@ -434,7 +461,7 @@ console.log(++a);
 console.log(a);
 
 // 3.
-const { deposits2, withdrawals2 } = shared.accounts
+const { deposits2, withdrawals2 } = accounts
     .flatMap(acc => acc.movements)
     .reduce(
         (sums, cur) => {
