@@ -103,16 +103,8 @@ console.log(5 / 2); // 5 = 2 * 2 + 1
 console.log(8 % 3);
 console.log(8 / 3); // 8 = 2 * 3 + 2
 
-console.log(6 % 2);
-console.log(6 / 2);
-
-console.log(7 % 2);
-console.log(7 / 2);
-
 const isEven = n => n % 2 === 0;
 console.log(isEven(8));
-console.log(isEven(23));
-console.log(isEven(514));
 
 const labelBalance = document.querySelector('.balance__value');
 labelBalance.addEventListener('click', function () {
@@ -138,23 +130,29 @@ console.log(price);
 const transferFee1 = 15_00;
 const transferFee2 = 1_500;
 
-const PI = 3.1415;
+const PI = 3.14_15;
 console.log(PI);
 
-console.log(Number('230_000'));
-console.log(parseInt('230_000'));
+console.log(Number('230_000')); // not working
+console.log(parseInt('230_000')); // this will parse as 230
 
 
 ///////////////////////////////////////
 // Working with BigInt
+
+// numbers represented in 64 bits
 console.log(2 ** 53 - 1);
 console.log(Number.MAX_SAFE_INTEGER);
+
+// not safe (too big):
 console.log(2 ** 53 + 1);
 console.log(2 ** 53 + 2);
 console.log(2 ** 53 + 3);
 console.log(2 ** 53 + 4);
 
+// huge numbers:
 console.log(4838430248342043823408394839483204n);
+// this constructor should be used with smaller numbers:
 console.log(BigInt(48384302));
 
 // Operations
@@ -162,27 +160,26 @@ console.log(10000n + 10000n);
 console.log(36286372637263726376237263726372632n * 10000000n);
 // console.log(Math.sqrt(16n));
 
+// we cannot mix BigInt with other types, but if we use the constructor function will work:
 const huge = 20289830237283728378237n;
 const num = 23;
 console.log(huge * BigInt(num));
 
 // Exceptions
 console.log(20n > 15);
-console.log(20n === 20);
+console.log(20n === 20);  // false
 console.log(typeof 20n);
-console.log(20n == '20');
+console.log(20n == '20'); // true
 
 console.log(huge + ' is REALLY big!!!');
 
 // Divisions
-console.log(11n / 3n);
-console.log(10 / 3);
+console.log(11n / 3n);  // 3n
+console.log(10 / 3);    // 3.(3)
 
 
 ///////////////////////////////////////
 // Creating Dates
-
-// Create a date
 
 const now = new Date();
 console.log(now);
@@ -191,11 +188,13 @@ console.log(new Date('Aug 02 2020 18:05:41'));
 console.log(new Date('December 24, 2015'));
 console.log(new Date(account1.movementsDates[0]));
 
+// months are zero-based, so 10 is November
 console.log(new Date(2037, 10, 19, 15, 23, 5));
+// JS can even correct the day (November 31 to December 01)
 console.log(new Date(2037, 10, 31));
 
-console.log(new Date(0));
-console.log(new Date(3 * 24 * 60 * 60 * 1000));
+console.log(new Date(0));                        // UNIX timestamp 0 (1970.01.01)
+console.log(new Date(3 * 24 * 60 * 60 * 1000));  // UNIX time for 3 days (1970.01.04)
 
 
 // Working with dates
@@ -211,27 +210,53 @@ console.log(future.getSeconds());
 console.log(future.toISOString());
 console.log(future.getTime());
 
+// UNIX time
 console.log(new Date(2142256980000));
 
+// returns the timestamp for present time
 console.log(Date.now());
 
+// set the year
 future.setFullYear(2040);
 console.log(future);
 
 
 ///////////////////////////////////////
 // Operations With Dates
+
 console.log(+future);
 
+// dates are converted to timestamps when we do arithmetic operations with them
 const calcDaysPassed = (date1, date2) =>
   Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
 
+const subtractOneDay = (date1) => new Date(date1 - (1000 * 60 * 60 * 24));
+
 const days1 = calcDaysPassed(new Date(2037, 3, 4), new Date(2037, 3, 14));
+const days2 = subtractOneDay(new Date(2037, 3, 4));
 console.log(days1);
+console.log(days2);
 
 
 ///////////////////////////////////////
-// Internationalizing Numbers (Intl)
+// Internationalizing dates and numbers (Intl)
+
+const dateOptions = {
+  hour: 'numeric',
+  minute: 'numeric',
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+  weekday: 'long',
+};
+
+const intDate = new Intl.DateTimeFormat(
+    "ro-RO",
+    dateOptions
+).format(now);
+console.log(intDate);
+
+
 const num2 = 3884764.23;
 
 const options = {

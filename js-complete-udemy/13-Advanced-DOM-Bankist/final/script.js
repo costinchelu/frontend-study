@@ -92,6 +92,7 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
+
 ///////////////////////////////////////
 // Tabbed component
 
@@ -114,6 +115,7 @@ tabsContainer.addEventListener('click', function (e) {
     .classList.add('operations__content--active');
 });
 
+
 ///////////////////////////////////////
 // Menu fade animation
 const handleHover = function (e) {
@@ -129,9 +131,11 @@ const handleHover = function (e) {
   }
 };
 
+
 // Passing "argument" into handler
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
+
 
 ///////////////////////////////////////
 // Sticky navigation: Intersection Observer API
@@ -154,6 +158,7 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 });
 
 headerObserver.observe(header);
+
 
 ///////////////////////////////////////
 // Reveal sections
@@ -204,8 +209,10 @@ const imgObserver = new IntersectionObserver(loadImg, {
 
 imgTargets.forEach(img => imgObserver.observe(img));
 
+
 ///////////////////////////////////////
 // Slider
+
 const slider = function () {
   const slides = document.querySelectorAll('.slide');
   const btnLeft = document.querySelector('.slider__btn--left');
@@ -293,11 +300,6 @@ const slider = function () {
 };
 slider();
 
-///////////////////////////////////////
-///////////////////////////////////////
-///////////////////////////////////////
-
-/*
 ///////////////////////////////////////
 // Selecting, Creating, and Deleting Elements
 
@@ -391,6 +393,7 @@ logo.clasName = 'jonas';
 
 ///////////////////////////////////////
 // Types of Events and Event Handlers
+
 const h1 = document.querySelector('h1');
 
 const alertH1 = function (e) {
@@ -435,6 +438,7 @@ document.querySelector('.nav').addEventListener('click', function (e) {
 
 ///////////////////////////////////////
 // DOM Traversing
+
 const h1 = document.querySelector('h1');
 
 // Going downwards: child
@@ -509,4 +513,4 @@ window.addEventListener('beforeunload', function (e) {
   console.log(e);
   e.returnValue = '';
 });
-*/
+
