@@ -35,7 +35,7 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
-
+/*
 ///////////////////////////////////////
 // Button scrolling
 btnScrollTo.addEventListener('click', function (e) {
@@ -308,8 +308,6 @@ console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
 
-const header = document.querySelector('.header');
-const allSections = document.querySelectorAll('.section');
 console.log(allSections);
 
 document.getElementById('section--1');
@@ -439,8 +437,6 @@ document.querySelector('.nav').addEventListener('click', function (e) {
 ///////////////////////////////////////
 // DOM Traversing
 
-const h1 = document.querySelector('h1');
-
 // Going downwards: child
 console.log(h1.querySelectorAll('.highlight'));
 console.log(h1.childNodes);
@@ -514,3 +510,4 @@ window.addEventListener('beforeunload', function (e) {
   e.returnValue = '';
 });
 
+*/
